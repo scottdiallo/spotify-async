@@ -1,0 +1,24 @@
+{
+  "name": "spotify-recommend",
+  "version": "0.0.1",
+  "description": "Parallel Spotify requests",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dengeist/spotify-recommend.git"
+  },
+  "author": "Scott & Elias",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dengeist/spotify-recommend/issues"
+  },
+  "homepage": "https://github.com/dengeist/spotify-recommend#readme",
+  "dependencies": {
+    "express": "^4.13.4",
+    "unirest": "^0.4.2"
+  }
+}
