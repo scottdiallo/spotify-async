@@ -19,6 +19,8 @@ var getFromApi = function(endpoint, args) {
     return emitter;
 };
 
+//app.get('/hello')
+
 app.get('/search/:name', function(req, res) {
     var searchReq = getFromApi('search', {
         q: req.params.name,
@@ -26,14 +28,30 @@ app.get('/search/:name', function(req, res) {
         type: 'artist'
     });
 
+
     searchReq.on('end', function(item) {
         var artist = item.artists.items[0];
+
+        var relatedReq = getFromApi('artists', {
+            q: artist.id,
+            // limit: 3,
+            type: 'artist'
+        });
+
+        relatedReq.on('end', function(item) {
+            console.log(item.artists);
+        });
+
+
         res.json(artist);
+        console.log(artist);
+
     });
 
     searchReq.on('error', function(code) {
         res.sendStatus(code);
     });
+
 });
 
 app.listen(8080);
